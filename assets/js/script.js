@@ -213,7 +213,7 @@ $(".card .list-group").sortable({
       .find("span")
       .text()
       .trim();
-
+      console.log("**** $(this).attr('id') :::", $(this));
       //trim down list's ID to match object property
       var arrName = $(this)
         .attr("id")
@@ -229,6 +229,21 @@ $(".card .list-group").sortable({
         date: date
       });
     });
+  }
+});
+
+$("#trash").droppable({
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function(event, ui) {
+    ui.draggable.remove();
+    console.log("drop");
+  },
+  over: function(event, ui) {
+    console.log("over");
+  },
+  out: function(event, ui) {
+    console.log("out");
   }
 });
 
